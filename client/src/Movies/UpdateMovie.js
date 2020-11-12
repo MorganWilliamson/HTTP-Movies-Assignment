@@ -25,7 +25,7 @@ const UpdateMovie = (props) => {
                 setItem(res.data)
             })
             .catch((err) => console.log("GET request error: ", err));
-    }, [])
+    }, [id])
 
     // Change handler.
     const handleChanges = (e) => {
