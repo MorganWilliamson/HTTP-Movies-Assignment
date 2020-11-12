@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 // Set initial state.
@@ -7,7 +7,7 @@ const initialState = {
     title: "", 
     director: "", 
     metascore: "", 
-    stars: ""
+    stars: []
 };
 
 // AddMovie function.
@@ -15,7 +15,6 @@ const AddMovie = (props) => {
     // Set slice of state.
     const [item, setItem] = useState(initialState);
     const { id } = useParams();
-    const { push } = useHistory();
 
     const handleChanges = (e) => {
         setItem({
@@ -49,6 +48,7 @@ const AddMovie = (props) => {
                     name="title"
                     onChange={handleChanges}
                     placeholder="Title"
+                    value={item.title}
                 />
                 <div className="baseline" />
 
@@ -57,6 +57,7 @@ const AddMovie = (props) => {
                     name="director"
                     onChange={handleChanges}
                     placeholder="Director"
+                    value={item.director}
                 />
                 <div className="baseline" />
 
@@ -65,6 +66,7 @@ const AddMovie = (props) => {
                     name="metascore"
                     onChange={handleChanges}
                     placeholder="Metacritic Rating"
+                    value={item.metascore}
                 />
                 <div className="baseline" />
 
@@ -73,6 +75,7 @@ const AddMovie = (props) => {
                     name="stars"
                     onChange={handleChanges}
                     placeholder="Starring Actors"
+                    value={item.stars}
                 />
                 <div className="baseline" />
 
