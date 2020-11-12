@@ -31,23 +31,59 @@ const UpdateMovie = (props) => {
         setItem({
             ...item, 
             [e.target.name]: e.target.value,
-        });
+          });
+        
     };
 
     // Submission handler.
     const handleSubmit = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         axios 
             .put(`http://localhost:5000/api/movies/${id}`, item) 
             .then((res) => {
                 props.setItem(res.data)
-                push(`/`)
+                push(`/movies/${id}`)
             })
             .catch((err) => console.log("PUT request error: ", err));
     };
 
     // JSX form.
-    return(<h1>Hi</h1>)
+    return(
+    <div>
+        <h2>Update a Movie</h2>
+        <form onSubmit={handleSubmit}>
+            <input 
+                type="text"
+                name="title"
+                onChange={handleChanges}
+                placeholder="Movie Title"
+                value={item.title}
+            />
+            <div className="baseline" />
+
+            <input 
+                type="text"
+                name="director"
+                onChange={handleChanges}
+                placeholder="Movie Director"
+                value={item.director}
+            />
+            <div className="baseline" />
+
+            <input 
+                type="number"
+                name="metascore"
+                onChange={handleChanges}
+                placeholder="Metacritic Rating"
+                value={item.metascore}
+            />
+            <div className="baseline" />
+
+            <button>Click Here to Update!</button>
+
+        </form>
+
+    </div>)
 }
 
 export default UpdateMovie;
