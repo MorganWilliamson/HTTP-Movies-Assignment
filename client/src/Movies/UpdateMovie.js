@@ -21,10 +21,11 @@ const UpdateMovie = (props) => {
         axios
             .get(`http://localhost:5000/api/movies/${id}`)
             .then((res) => {
+                console.log(res.data)
                 setItem(res.data)
             })
             .catch((err) => console.log("GET request error: ", err));
-    })
+    }, [])
 
     // Change handler.
     const handleChanges = (e) => {
@@ -37,12 +38,13 @@ const UpdateMovie = (props) => {
 
     // Submission handler.
     const handleSubmit = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         axios 
             .put(`http://localhost:5000/api/movies/${id}`, item) 
             .then((res) => {
-                props.setItem(res.data)
+                setItem(res.data)
                 push(`/movies/${id}`)
+                console.log(res.data)
             })
             .catch((err) => console.log("PUT request error: ", err));
     };
