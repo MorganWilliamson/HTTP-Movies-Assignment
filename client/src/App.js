@@ -38,6 +38,19 @@ const App = () => {
       })
   }
 
+  const addMovie = (data) => {
+    const newMovie = {...data};
+      axios
+        .post(`http://localhost:5000/api/movies`, newMovie)
+        .then((res) => {
+          const newList = [...movieList]
+          newList.push(newMovie)
+          setMovieList(newList);
+          history.push("/")
+        })
+        .catch((err) => console.log("POST request error: ", err));
+  }
+
   return (
     <>
       <SavedList list={savedList} />
