@@ -55,6 +55,10 @@ const App = () => {
     <>
       <SavedList list={savedList} />
 
+      <Route >
+        <AddMovie addMovie={addMovie} />
+      </Route>
+
       <Route exact path="/">
         <MovieList movies={movieList} />
       </Route>
@@ -65,10 +69,6 @@ const App = () => {
 
       <Route path="/update-movie/:id"
              render={(props) => <UpdateMovie {...props} />} >  
-      </Route>
-
-      <Route >
-        <AddMovie addMovie={addMovie} />
       </Route>
     </>
   );
