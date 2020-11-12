@@ -33,7 +33,7 @@ const AddMovie = (props) => {
         axios
             .get(`http://localhost:5000/api/movies/${id}`)
             .then((res) => {
-                setItem({...res.data})
+                setItem({...res.data, stars: res.data.stars.join(", ")})
             })
             .catch((err) => console.log("AddMovie GET error: ", err));
     }, []);
